@@ -1,0 +1,30 @@
+﻿@page "{id:int?}"
+@model Study.Pages.Students.EditModel
+@{
+    ViewData["Title"] = (Model.Student.Id == 0 ? "Create" : "Edit");
+}
+<h2>@(Model.Student.Id == 0 ? "Creating" : "Editing") @Model.Student.Name</h2>
+
+<form method="POST">
+    <input type="hidden" asp-for="Student.Id" />
+    <div class="form-group">
+        <label asp-for="Student.Name"></label>
+        <input asp-for="Student.Name" class="form-control" />
+        <span class="text-danger" asp-validation-for="Student.Name"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Student.Age"></label>
+        <input asp-for="Student.Age" class="form-control" />
+        <span class="text-danger" asp-validation-for="Student.Age"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Student.Nationality"></label>
+        <select asp-for="Student.Nationality" asp-items="Model.Nationalities" class="form-control">
+
+        </select>
+        <span class="text-danger" asp-validation-for="Student.Nationality"></span>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Save</button>
+
+</form>

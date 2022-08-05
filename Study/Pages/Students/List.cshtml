@@ -1,0 +1,32 @@
+﻿@page
+@model Study.Pages.Students.ListModel
+@{
+    ViewData["Title"] = "Students";
+}
+
+<form method="get">
+    <div class="form-group">
+        <div class="input-group">
+            <input type="search" class="form-control" asp-for="SearchTerm" />
+            <span class="input-group-append">
+                <button class="btn btn-light">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </span>
+        </div>
+    </div>
+
+</form>
+
+<h1>Listes des etudiants:</h1>
+
+@foreach(var student in Model.Students)
+{
+    <partial name="_Summary" model="student" />
+}
+
+<a asp-page="./Edit" class="btn btn-primary">Add new</a>
+
+@section footer {
+    <div>Hello everyone !</div>
+}

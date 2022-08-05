@@ -1,0 +1,13 @@
+﻿@page "{id:int}"
+@model Study.Pages.Students.DeleteModel
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete!</h2>
+<div class="alert alert-danger">Are you sure you want to delete @Model.Student.Name ?</div>
+<form method="post">
+    <button type="submit" class="btn btn-danger">Yes!</button>
+    <a asp-page="./List" class="btn btn-light" >Cancel</a>
+</form>
+

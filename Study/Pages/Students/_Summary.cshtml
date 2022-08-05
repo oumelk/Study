@@ -1,0 +1,24 @@
+﻿@using Study.Core
+@model Student 
+
+<div class="card card-default m-3">
+    <div class="card-header">
+        <h3>@Model.Name</h3>
+    </div>
+    <div class="card-body">
+        <span>Age: @Model.Age</span>
+        <span>Nationality: @Model.Nationality</span>
+    </div>
+    <div class="card-footer">
+        <a asp-page="./Detail" asp-route-id="@Model.Id" class="btn btn-light">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </a>
+        <a asp-page="./Edit" asp-route-id="@Model.Id" class="btn btn-light">
+            <i class="fa-solid fa-pen-to-square"></i>                
+        </a>
+        <a asp-page="./Delete" asp-route-id="@Model.Id" class="btn btn-light">
+            <i class="fa-solid fa-trash-can"></i>               
+        </a>
+    </div>
+
+</div>

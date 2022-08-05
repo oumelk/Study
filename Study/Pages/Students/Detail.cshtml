@@ -1,0 +1,25 @@
+﻿@page "{id:int}"
+@model Study.Pages.Students.DetailModel
+@{
+    ViewData["Title"] = "Detail";
+}
+
+@if(Model.Message != null)
+{
+    <div class="alert alert-info">@Model.Message</div>
+}
+
+<h2>@Model.Student.Name</h2>
+<div>
+    Id : @Model.Student.Id
+</div>
+<div>
+    Age : @Model.Student.Age
+</div>
+<div>
+    Nationality : @Model.Student.Nationality
+</div>
+
+<a asp-page="./List" class="btn btn-light">All students</a>
+
+
