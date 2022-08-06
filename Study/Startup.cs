@@ -20,6 +20,11 @@ namespace Study
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // for aspnetcore3.0+
+
+            services.AddRazorPages();
+            services.AddControllers();
+
             services.AddDbContextPool<StudyDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("StudyDb"));
@@ -54,6 +59,7 @@ namespace Study
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapControllers();
             });
         }
     }
