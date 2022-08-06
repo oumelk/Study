@@ -36,4 +36,8 @@
     <Folder Include="wwwroot\lib\jquery\dist\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\study.png" />
+  </ItemGroup>
+
 </Project>
