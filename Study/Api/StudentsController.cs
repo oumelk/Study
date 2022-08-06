@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Study.Core;
 using Study.Data;
 
-namespace Study
+namespace Study.Api
 {
     [Route("api/[controller]")]
     [ApiController]
