@@ -51,6 +51,7 @@ namespace Study
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseNodeModules();
 
             app.UseRouting();
 
