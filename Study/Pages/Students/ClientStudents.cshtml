@@ -1,0 +1,17 @@
+﻿@page
+@model Study.Pages.Students.ClientStudentsModel
+@{
+}
+
+<h2>Client students</h2>
+
+@section Scripts{
+    <script>
+        $(function() {
+            $.ajax("/api/students", { method: "get" })
+                .then(function(response){
+                    console.dir(response);
+                });
+        });
+    </script>
+}
