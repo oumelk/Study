@@ -5,6 +5,10 @@
 
 <h2>Client students</h2>
 
+<table class="table" id="students">
+
+</table>
+
 @section Scripts{
 
     <script src="~/node_modules/datatables.net/js/jquery.dataTables.js"></script>
@@ -12,11 +16,25 @@
     <link rel="stylesheet" href="~/node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css" />
 
     <script>
+
+        var nationalities = ["Unkown", "Moroccan", "Egyptian", "Algerian", "French"];
+
         $(function() {
             $.ajax("/api/students", { method: "get" })
                 .then(function(response){
                     
-
+                    $("#students").dataTable({
+                        data: response,
+                        columns: [
+                            {"data" : "name"},
+                            {"data" : "age"},
+                            {
+                                "data": "nationality", "render": function(data){ 
+                                    return nationalities[data]
+                                }
+                            }
+                        ]
+                    })
 
                 });
         });

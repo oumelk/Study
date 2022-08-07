@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Study.Data;
+using System;
 
 namespace Study
 {
@@ -49,6 +51,8 @@ namespace Study
                 app.UseHsts();
             }
 
+            app.Use(SayHelloMidleWare);
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseNodeModules();
@@ -62,6 +66,24 @@ namespace Study
                 endpoints.MapRazorPages();
                 endpoints.MapControllers();
             });
+        }
+
+        private RequestDelegate SayHelloMidleWare(RequestDelegate next)
+        {
+            return async context =>
+            {
+                if (context.Request.Path.StartsWithSegments("/hello")){
+
+                    await context.Response.WriteAsync("Hello world!");
+                }
+                else
+                {
+                    await next(context);
+                }
+                
+               
+            };
+            
         }
     }
 }
