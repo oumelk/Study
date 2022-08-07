@@ -18,6 +18,7 @@ namespace Study.Pages.Students
 
         [BindProperty(SupportsGet = true)]
         public string SearchTerm { get; set; }
+        public string Message { get; set; }
 
         public ListModel(IConfiguration config, IStudentData studentData, ILogger<ListModel> logger)
         {
@@ -29,6 +30,7 @@ namespace Study.Pages.Students
         public void OnGet()
         {
             logger.LogInformation("Executing ListModel");
+            Message = config["Message"];
             Students = studentData.GetStudentsByName(SearchTerm);
         }
 
