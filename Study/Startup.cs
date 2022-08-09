@@ -32,8 +32,8 @@ namespace Study
                 options.UseSqlServer(Configuration.GetConnectionString("StudyDb"));
             });
 
-            //services.AddScoped<IStudentData, SqlStudentData>();
-            services.AddScoped<IStudentData, InMemoryStudentData>();
+            services.AddScoped<IStudentData, SqlStudentData>();
+            //services.AddScoped<IStudentData, InMemoryStudentData>();
 
             services.AddRazorPages();
         }

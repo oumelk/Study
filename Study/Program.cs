@@ -1,5 +1,9 @@
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Study.Data;
+using System;
 
 namespace Study
 {
@@ -7,7 +11,21 @@ namespace Study
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var host = CreateHostBuilder(args).Build();
+
+            MigrateDataBase(host);
+
+            host.Run();
+        }
+
+        private static void MigrateDataBase(IHost host)
+        {
+            using (var scope = host.Services.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetRequiredService<StudyDbContext>();
+
+                db.Database.Migrate();
+            }
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
